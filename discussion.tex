@@ -1,4 +1,49 @@
 \section{Discussion}
 \label{sed:discussion}
 
-Any observations we have about the results.
+% Any observations we have about the results.
+In order to convey intuition for how the algorithms differ, we will examine the keywords extracted from a few documents in depth.
+
+In general, Phrase Boosting can be thought of as imposing a prior distribution over what phrases should be considered important. This prior is then combined with the local knowledge in a specific lecture. In practice, TF-IDF tends to give longer phrases unfairly low scores, because they do not appear frequently, even though they may be quite important to the content. Phrase Boosing corrects this by raising the value of longer phrases. For example, in the lecture ``DTDs IDs and IDREFs'', the phrase ``Document Type Descriptors'' is clearly important, but only appears 5 times in the document, and is ranked 36th if Phrase Boosting is not used. After incorporating the global Wikipedia ranking and the preference for longer phrases, it is boosted to the 9th rank. There are similar occurences throughout the lecture collection of longer phrases that only appear a small number of times in the document but have a high $TF\text{-}IDF_w$ score on the Wikipedia ranking. In a lecture on ``Multivalued Dependencies and Fourth Normal Form'', the phrase ``multivalued dependencies'' appears only 3 times in the lecture transcript and is therefore not considered a keyword by vanilla TF-IDF. The phrase appears 26 times on Wikipedia in 4 documents, and is tagged as a keyword when the Wikipedia ranking is incorporated.
+
+There are also a few nice properties of Phrase Boosting from algorithmic and computational perspectives. First, we formed the combined ranking $TF\text{-}IDF_{combined}$ by giving equal weight to $TF\text{-}IDF_{w-norm}$, the phrase's score in the Wikipedia ranking, and $TF\text{-}IDF_{norm}$, the phrase's score in the lecture ranking. One could modify the preference of the algorithm towards favoring local or external information by weighting these two components differently - if all weight was given to $TF\text{-}IDF_{norm}$ the algorithm would output the same order as TF-IDF, and if all weight was given to $TF\text{-}IDF_{w-norm}$ the algorithm would output the order extracted from Wikipedia. This principle applies more generally, and Phrase Boosting can incorporate any prior belief about keyphrases. Second, although there are a large number of documents in Wikipedia (the algorithm was run on 5027125 documents which had a total size of about 50GB), the runtime complexity is linear in the number of documents and therefore quite tractable on modern hardware.
+
+% TODO: Write about document boosting.
+
+\begin{figure}[h!]
+\caption{}
+\label{fig:document_boosting_v_tfidf}
+\begin{tabular}{|l|l|}
+\hline
+\textbf{Document Boosting} & \textbf{TF-IDF} \\
+\hline
+transaction & transaction \\
+\hline
+isolation level & read \\
+\hline
+read & isolation level \\
+\hline
+lock & t1 \\
+\hline
+commit & t2 \\
+\hline
+concurrent & commit \\
+\hline
+serialization & client \\ 
+\hline
+repeat read & dirty read \\
+\hline
+concurrency control & uncommit \\
+\hline
+dirty read & transaction isolation level \\ 
+\hline
+transaction commit & GPA \\
+\hline
+\end{tabular}
+\end{figure}
+
+The Document Boosting algorithm can be thought of as amplifying the keyphrases for a lecture, and therefore decreasing the scores of phrases that happen to occur frequently in a lecture but are not meaningful. This often occurs if a lecture has worked examples that use words from the examples frequently, as can be seen in Figure \ref{fig:document_boosting_v_tfidf}, which shows the top ranked phrases for the Document Boosting algorithm and plain TF-IDF on a lecture on ``Isolation Levels''. In TF-IDF's keywords, we can see that there was a example involving students, and the token ``GPA'' appears frequently, even though it is not important to the core concept of the lecture. Similarly, the instructor used examples with transactions named ``T1'' and ``T2'', which appeared frequently in this lecture and not others, in effect tricking the TF-IDF metric.
+
+When Document Boosting was run, the Wikipedia article ``Isolation (database systems)'' was selected, which was able to decrease the frequency of phrases that were part of specific examples, and augment the frequency of words that were related to the concept of isolation levels, such as ``concurrency control'', ``repeat read'', and ``transaction commit''. We can see that conceptually the algorithm is boosting phrases in the intersection of the Wikipedia article and lecture. This allows noise that only occurs frequently in the lecture to be identified and cut out.
+
+% Interestingly, the Document Boosting algorithm, which selects a Wikipedia article related to each lecture and then extracts keywords from their concatenation, performs well even when a poorly related Wikipedia article is selected. Because articles are selected simply by running a query with the title of the lecture, the first item returned is sometimes a poor choice; for example, the lecture ``Basic SELECT Statements'' is attached to a article on ``Visual Basic''. 

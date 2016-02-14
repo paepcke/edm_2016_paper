@@ -1,5 +1,33 @@
 \subsection{Summary of Results}
 \label{sec:sum}
 
-Here is where the comparisons between the two/three experimental
-results happens.
+% Here is where the comparisons between the two/three experimental
+% results happens.
+
+As stated in section \ref{sec:gold}, we computed agreement between humans using Fleiss' Kappa. We use Cohen's Kappa to compute agreement between each algorithm and the union of the lecture-phrase pairs in the gold index, i.e. a lecture-phrase pair is classified as ``keyword'' if any human rater classified it as a keyword, and classified as ``not keyword'' otherwise. 
+
+Kappa values do not have a universally agreed upon interpretation, but values in the range we observe (about 0.15 to 0.3) have been interpreted as indicating ``slight'' to ``fair'' agreement. The fact that agreement between humans is only 0.327, and the lowest pairwise Kappa between humans was 0.272 suggests that the keyword extraction task is inherently subjective, and there are mutiple valid interpretations of what phrases are important enough to be attached to a document.
+
+The vanilla TF-IDF algorithm was already able to achieve reasonable performance, with respect to the human annotators. Limiting the candidate set to adjective-noun chunks drastically hurt the performance of the algorithm, suggesting that many important phrases do not fit this linguistic pattern, and the restriction is too severe. Document Boosting and Phrase Boosting, the two algorithms that incorporated external knowledge, were able to make improvements on the basic algorithm. Phrase Boosting with the TF-IDF scores of all candidate keywords was slightly better than TF-IDF, and only boosing longer phrases (Phrase Boosting N-Grams) was able to improve further.
+
+\begin{figure}
+\caption{}
+\label{fig:main_result}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Algorithm} & $\mathbf{\kappa}$ \\
+\hline 
+TF-IDF & 0.162 \\
+\hline 
+TF-IDF with Adjective-Noun Chunks & 0.069 \\
+\hline
+Document Boosting & 0.177 \\
+\hline
+Document Boosting with Adjective-Noun Chunks & 0.123 \\
+\hline 
+Phrase Boosting & 0.165 \\
+\hline
+Phrase Boosting N-Grams & 0.177 \\
+\hline
+\end{tabular}
+\end{figure}

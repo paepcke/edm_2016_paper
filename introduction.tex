@@ -1,2 +1,10 @@
 \section{Introduction}
 \label{sec:intro}
+
+One of the biggest challenges of delivering education with massively open online courses (MOOCs) is the high student to instructor ratio, which is further compounded in courses where students don't arrive at traditional term boundaries. In the extreme, \textit{untended} courses may not have any active teaching staff. Without support, students fend for themselves when they don't understand a concept or need to review for a test. Our team is building a system to autonomously help students enrolled in unattended courses; this will enhance, not replace, human instruction and improve the support for all learners.
+
+Extracting important phrases and concepts both directly aids learners and serves as a foundation for the rest of the system. For example, the system produces a set of keywords that index into segments of lecture videos, allowing learners to quickly find parts of lecture relevant to a topic. These keywords could also be used by the system to find the lecture segment most relevant to a forum post, or other information retrieval tasks.
+
+Our indexing system takes transcripts of lecture videos as input, which presents several interesting challenges. Many keyword extraction systems are designed for use on large collections of loosely related documents, such as newspaper articles or abstracts from an academic journal. In contrast, lectures for a class are tightly linked to each other, have a well-defined sequence, and are usually delivered by only one or two instructors.
+
+We used our system to extract keywords from the content of a online introductory databases course, and then tested for agreement against a gold set of phrases produced by humans. Our first experiment took a statistical approach, selecting words that appeared frequently throughout the class, and disproportionately in certain lectures. We then incorporated lexical information, by only considering phrases that followed certain part-of-speech patterns. Finally, we were able to improve the quality of our index by incorporating external knowledge from Wikipedia pages.

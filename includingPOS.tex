@@ -1,0 +1,9 @@
+\subsection{Leveraging Linguistic Information}
+\label{sec:useTime}
+
+% Do we have any experiments that do take the positions of terms in the
+% sequence of videos into account? Such an experiment would nicely tell
+% a story from naive TF/IDF to including pedagogy to including external
+% wikipedia.
+
+Considering all of the n-grams in the collection of lectures as candidate keywords has the potential to add significant noise. By selecting only certain linguistic patterns for consideration as keywords, it is possible to reduce the size of the candidate set, while still covering most important phrases. We experimented with an algorithm that runs a part-of-speech tagger over the lecture transcripts, and then selects only phrases that consist of an optional number of adjectives followed by one or more nouns. For example, ``equality condition'' or ``XML data''. We then run TF-IDF over this reduced candidate set.

@@ -1,6 +1,12 @@
 \section{Preparation of Gold Index}
 \label{sec:gold}
 
-Describe how we had the index prepared: Paid workers, the course,
-instructions they received. Some stats: average number of index terms
-they came up with, inter-rater reliability.
+% Describe how we had the index prepared: Paid workers, the course,
+% instructions they received. Some stats: average number of index terms
+% they came up with, inter-rater reliability.
+
+In order to evaluate our algorithms, we prepared a gold standard index of terms extracted from an introductory databases course. Because this task requires to annotating keywords for a technical, semester-length course, the workers were compensated. Annotators were instructed to mark keywords in the lecture transcripts if they felt the lecture was important for students searching for the keyword. There was no limit to how many keywords annotators could mark in a lecture, and at the end they were asked to rank the top five keywords from that lecture, and were allowed to mark fewer than five keywords in a lecture. Annotators were only allowed to use phrases that appeared in the text as keywords, i.e. they could not generate their own original phrases.
+
+The annotators extracted keywords for 81 lecture videos (the course was broken into a large number of short videos), with an average of about 8 keywords per video. We evaluated agreement between humans using Fleiss' Kappa, which generalizes Cohen's Kappa to settings with more than two annotators \cite{fleiss1971measuring}. The $\kappa$ is a measure of inter-rater agreement, with range $[-1, 1]$, where 1 means the raters are in complete agreement, -1 complete disagreement, and 0 the agreement expected by chance. We formulate keyword extraction as a binary classification task, where the two categories are ``keyword'' and ``not keyword''. Given a set of raters and a collection of lectures $\ell_1, \ldots, \ell_n$, where each lecture contains phrases $p_1, \ldots, p_n \in \ell_i$, we define the set of examples to be classified as the set of lecture-phrase pairs $(\ell, p)$ such that $p$ appears in $\ell$, and $p$ is either a 1-gram (i.e. a word) or $(\ell, p)$ was tagged as a keyword by at least one rater. 
+
+We computed a $\kappa$ of 0.327 between all human raters in the gold set as a upper bound on the performance we could reasonably expect from any keyword extraction algorithm. The largest pairwise $\kappa$ between raters was 0.371 and the lowest was 0.272 (note that Fleiss' Kappa is not generally the average of the pairwise Cohen's Kappas).

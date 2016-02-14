@@ -33,6 +33,7 @@
 \usepackage{fixltx2e}
 \usepackage{floatrow}
 \usepackage{url}
+\usepackage{mathtools}
 \usepackage[font=small,skip=0pt]{caption}
 
 \makeatletter
@@ -137,7 +138,9 @@
 % number that will appear in the \additionalauthors section.
 
 \maketitle
+% Probably put in a little bit more.
 \begin{abstract}
+As enrollment in online courses grows, it is becoming increasingly difficult for course staff to support students on an individual basis. We are building an autonomous system that will aid instructors and learners in online education; for example, the system might link a forum post with a relevant section of lecture if it detects the poster is confused, or suggest review materials based on a student's history. As a foundation of this system we developed an indexing module that will detect phrases relevant to the key concepts of each lecture, a task often termed keyword extraction. Most research on keyword extraction has focused on heterogenous corpuses, such as abstracts from scientific journals, while our system operates on lecture videos, which are relatively homogenous. To deal with this new setting, we designed algorithms that incorporate external knowledge, using the entire Wikipedia document collection. To evaluate the keyword extraction module, we annotated an online databases course with keywords chosen by humans.
 \end{abstract}
 
 %% A category with the (minimum) three required fields
@@ -151,8 +154,8 @@
 \input{relatedWork.tex}
 \input{goldIndex.tex}
 \input{experiments.tex}
-\input{tfIdf.tex}
-\input{includingTime.tex}
+\input{tfidf.tex}
+\input{includingPOS.tex}
 \input{includingWikipedia.tex}
 \input{resultsSummary.tex}
 \input{discussion.tex}
@@ -160,7 +163,7 @@
 
 %\bibliographystyle{plain}
 \bibliographystyle{abbrv}
-\bibliography{indexer.bib}
+\bibliography{indexer}
 
 \end{document}
 
