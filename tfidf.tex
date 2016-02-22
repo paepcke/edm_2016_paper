@@ -4,18 +4,19 @@
 % Simply discard sequencing information of terms occurrences. For each
 % video put the top-n tf/idf terms into the index \cite{mann2008}.
 
+Term frequency-inverse document frequency, is defined for each phrase-lecture pair as the product of the number of times the phrase appears in the lecture divided by the logarithm of the number of proportion of lectures the phrase appears in. This is the standard definition of TF-IDF, with each lecture taken as a document. We then rank the phrases for each document by their TF-IDF score in that document.
 
-Term frequency-inverse document frequency, is defined for each phrase-lecture pair as the product of the number of times the phrase appears in the lecture divided by the logarithm of the number of proportion of lectures the phrase appears in. Formally, the term frequency $TF(p, d)$ for a phrase $p$ and lecture $l$ is defined as
-\begin{equation*}
-TF(p, l) \coloneqq \text{number of times } p \text{ appears in } l
-\end{equation*}
-and the $IDF(p, L)$ for a phrase $p$ and collection of lectures $L$ is defined as
-\begin{equation*}
-IDF(p, L) \coloneqq \log\left(\frac{|L|}{\text{number of documents in } L \text{ with } p} + 1\right)
-\end{equation*}
-Where a 1 is added as a heuristic so that terms appearing in all documents are not entirely discarded. Finally, $TF\text{-}IDF(p, l, L)$ is defined as
-\begin{equation*}
-TF\text{-}IDF(p, l, L) \coloneqq TF(p, l) \cdot IDF(p, L)
-\end{equation*}
+% Formally, the term frequency $TF(p, d)$ for a phrase $p$ and lecture $l$ is defined as
+% \begin{equation*}
+% TF(p, l) \coloneqq \text{number of times } p \text{ appears in } l
+% \end{equation*}
+% and the $IDF(p, L)$ for a phrase $p$ and collection of lectures $L$ is defined as
+% \begin{equation*}
+% IDF(p, L) \coloneqq \log\left(\frac{|L|}{\text{number of documents in } L \text{ with } p} + 1\right)
+% \end{equation*}
+% Where a 1 is added as a heuristic so that terms appearing in all documents are not entirely discarded. Finally, $TF\text{-}IDF(p, l, L)$ is defined as
+% \begin{equation*}
+% TF\text{-}IDF(p, l, L) \coloneqq TF(p, l) \cdot IDF(p, L)
+% \end{equation*}
 
-The algorithm computes $TF\text{-}IDF(p, l, L)$ for every phrase-lecture pair in $L$, and then ranks the phrases for each lecture by their TF-IDF.
+% The algorithm computes $TF\text{-}IDF(p, l, L)$ for every phrase-lecture pair in $L$, and then ranks the phrases for each lecture by their TF-IDF.

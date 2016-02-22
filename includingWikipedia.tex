@@ -9,7 +9,12 @@ Motivated by the intuition that phrases gain importance because of both their ro
 
 The first algorithm attaches each lecture with a closely related Wikipedia page, and then uses the previously described statistical and linguistic techniques to choose keywords from the combined document. Formally, the procedure is as follows. First, for each lecture, the algorithm takes the title of the lecture, removes stopwords, and uses the result as a query to Wikipedia. Then, the best Wikipedia page match is concatenated to the lecture transcript. After attaching a Wikipedia page to each transcript, we run the previously described procedures over the collection of concatenated lectures and Wikipedia pages.
 
-For example, for the lecture titled ``Introduction to JSON Data Part 1'', the Wikipedia query for ``JSON Data'' will return the Wikipedia page titled ``JSON'', which is then concatenated to the transcript from the lecture. Then, using either n-grams or adjective-noun phrases as candidate keywords, the algorithm chooses keywords with TF-IDF over the combined document.
+For example, for the lecture titled ``View Modifications Using Triggers'', the Wikipedia query will return the Wikipedia page titled ``Database trigger'', which is then concatenated to the transcript from the lecture. Then, using either n-grams or adjective-noun phrases as candidate keywords, the algorithm chooses keywords with TF-IDF over the combined document.
+
+\begin{figure}[h!]
+\caption{The Document Boosting algorithm searches for a Wikipedia page using the title of the lecture, concatenates the result to the lecture, and then runs TF-IDF over the combined document.}
+\includegraphics[width=\textwidth]{document_boosting.pdf}
+\end{figure}
 
 \subsubsection{Boosting Phrases}
 
@@ -50,3 +55,8 @@ TF_w(p) = \log \left(\sum_{d \in W} \text{number of times } p \text{ appears in 
 \end{equation*}
 
 Second, we take logarithm of the phrase count in the Wikipedia ranking. This seems to produce better empirical results.
+
+\begin{figure}[!h]
+\caption{The Phrase Boosting algorithm runs TF-IDF over the entirety of Wikipedia and then combines the global ranking with a local ranking for a document.}
+\includegraphics[width=\textwidth]{phrase_boosting.pdf}
+\end{figure}
