@@ -41,8 +41,9 @@ TF\text{-}IDF_{norm}(p, l, L) \coloneqq \frac{TF\text{-}IDF(p, l, L)}{\sum_{p'} 
 \end{equation*}
 Then, we combine the two normalized rankings to form a final score
 \begin{multline*}
-TF\text{-}IDF_{combined}(p, l, L, W) \coloneqq \\ TF\text{-}IDF_{w-norm}(p, W) + TF\text{-}IDF_{norm}(p, l, L)
+TF\text{-}IDF_{combined}(p, l, L, W) \coloneqq \\ \eta TF\text{-}IDF_{w-norm}(p, W) + TF\text{-}IDF_{norm}(p, l, L)
 \end{multline*}
+where $\eta$ is used to determine the weight between Wikipedia scores and lecture scores. We found that a value of $\eta = 2$, meaning the Wikipedia ranking is weighted twice as much, seemed to work well in practice, and report those results.
 
 We also experimented with only boosting phrases that were at least two words, based on the intution that longer phrases are often meaningful, but appear infrequently and therefore given low scores by TF-IDF. This is called ``Phrase Boosting N-Grams'' in Figure \ref{fig:main_result}, and can be thought of as multiplying $TF_w(p)$ by 0 if $p$ is not at least two tokens:
 \begin{equation*}
