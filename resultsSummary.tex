@@ -113,3 +113,10 @@ longer phrases (Phrase Boosting N-Grams) was able to improve
 further. We can see that negative agreement was high for all
 algorithms, suggesting that it is relatively easy to identify phrases
 that should not be indexed. Positive agreement was lower, implying it is indeed difficult to identify a small number of phrases to summarize the document, given that there are a large number of possible phrases, and there can be legitimate disagreement on what phrases are most important. Note that PABAK is not linearly related to Cohen's Kappa, $P_{\text{pos}}$, and $P_{\text{neg}}$, which explains how the Document Boosting algorithm can have a higher PABAK despite having a lower $P_{\text{pos}}$ and Cohen's Kappa.
+
+Interestingly, the algorithms seemed to be significantly closer to the
+indexer who took at least one database course in another institution.
+For example, the Document Boosting algorithm had a $\kappa$ of 0.240 and
+a $P_{\text{pos}}$ of 0.247 when compared to this indexer, while the
+$\kappa$s compared to other indexers were 0.146 and 0.191, and the
+$P_{\text{pos}}$ values were 0.147 and 0.147.

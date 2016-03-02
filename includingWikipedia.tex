@@ -7,10 +7,10 @@ Motivated by the intuition that phrases gain importance because of both their ro
 
 \subsubsection{Boosting Documents}
 
-The first algorithm attaches to each lecture a closely related Wikipedia page, and then uses the previously described statistical and linguistic techniques to choose phrases from the combined document. Formally, the procedure is as follows. First, for each lecture, the algorithm takes the title of the lecture, removes stopwords, and uses the result as a query to Wikipedia. Then, the best Wikipedia page match is concatenated to the lecture transcript. After attaching a Wikipedia page to each transcript, we run the previously described procedures over the collection of concatenated lecture-Wikipedia pages.
+The first algorithm attaches to each lecture a closely related Wikipedia page, and then uses the previously described statistical and linguistic techniques to choose phrases from the combined document. Formally, the procedure is as follows. First, for each lecture, the algorithm takes the title of the lecture, removes stopwords, and uses the result as a query to Wikipedia. Then, the first page in the search results returned by Wikipedia is concatenated to the lecture transcript. After attaching a Wikipedia page to each transcript, we run the previously described procedures over the collection of concatenated lecture-Wikipedia pages.
 
 For example, for the lecture titled ``View Modifications Using
-Triggers'', the Wikipedia query will return the Wikipedia page titled
+Triggers'', the first page in the Wikipedia search results is
 ``Database trigger'', which is then concatenated to the transcript of
 the lecture. Then, using either n-grams or adjective-noun phrases as
 candidate keywords, the algorithm chooses phrases with TF-IDF over the
@@ -70,7 +70,7 @@ $p$, while in our Wikipedia calculation a score is only calculated for
 each $p$. That approach is chosen because in this algorithm we are not interested in
 keywords for every Wikipedia document, but only in obtaining a global sense
 of the importance of a phrase. The algorithm is equivalent to summing over all
-Wikipedia documents $d \in W$ 
+Wikipedia documents $d \in W$
 \begin{equation*}
 TF_w(p) = \log \left(\sum_{d \in W} \text{number of times } p \text{ appears in } d\right)
 \end{equation*}

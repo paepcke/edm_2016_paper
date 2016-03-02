@@ -44,15 +44,21 @@ expected by chance.
 
 For our algorithms we formulate the indexing problem as a binary
 classification task, where the two categories are {\em in-index} and
-{\em not-in-index}. The algorithms' task was to classify every phrase in
-all lectures into these two buckets.
+{\em not-in-index}. The algorithms' task was to classify phrases in
+each lecture into these two buckets.
 
-Given a set of raters and a collection of lectures $\ell_1, \ldots,
-\ell_n$, where each lecture contains phrases $p_1, \ldots, p_n \in
-\ell_i$, we define the set of examples as the set of lecture-phrase
-pairs $(\ell, p)$ such that $p$ appears in $\ell$, and $p$ is either a
-1-gram or $(\ell, p)$ was tagged as an {\em in-index} phrase by at
-least one rater.
+Specifically, we have the algorithms classify phrases that are either
+1-grams or have been tagged as an {\em in-index} phrase by at least one
+rater. For example, in the sentence `One of them is what's called
+the inner join on a condition', where `inner join' has been marked as
+a keyword, the algorithms will be evaluated on their classification
+of `inner join' and `condition', but not on the phrase `one of'.
+% Given a set of raters and a collection of lectures $\ell_1, \ldots,
+% \ell_n$, where each lecture contains phrases $p_1, \ldots, p_n \in
+% \ell_i$, we define the set of examples as the set of lecture-phrase
+% pairs $(\ell, p)$ such that $p$ appears in $\ell$, and $p$ is either a
+% 1-gram or $(\ell, p)$ was tagged as an {\em in-index} phrase by at
+% least one rater.
 
 When not comparing against each of the three indexers individually, we
 combined the work of all three into a single index by computing the
