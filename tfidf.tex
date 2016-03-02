@@ -4,7 +4,16 @@
 % Simply discard sequencing information of terms occurrences. For each
 % video put the top-n tf/idf terms into the index \cite{mann2008}.
 
-Term frequency-inverse document frequency is defined for each phrase-lecture pair as the product of the number of times the phrase appears in the lecture divided by the logarithm of the proportion of lectures the phrase appears in. That is, we use the standard definition of TF-IDF, with each lecture taken as a document. We then rank the phrases for each document by their TF-IDF score in that document.
+Our simplest algorithm used a straight term frequency-inverse document
+frequency (TF-IDF) approach to identifying index terms in a
+lecture. TF-IDF is defined for each phrase-lecture pair as the product
+of the number of times the phrase appears in the lecture, divided by
+the logarithm of the proportion of lectures in which the phrase
+appears. That is, we used the standard definition of TF-IDF, with each
+lecture taken as a document. We then ranked the phrases for each
+document by their TF-IDF score in that document. In the simplest case
+we used the average number of keywords per lecture as evidenced in the
+humans' indexes as the threshold.
 
 % Formally, the term frequency $TF(p, d)$ for a phrase $p$ and lecture $l$ is defined as
 % \begin{equation*}

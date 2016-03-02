@@ -8,9 +8,20 @@
 % List whatever is common to the three experiments: stop word removal,
 % method used for stemming...
 
-We implemented different keyword extraction algorithms and measured how closely they agreed with the gold index formed by human annotators.
+We implemented different keyword extraction algorithms and measured
+how closely they agreed with the gold index derived from the work of
+our human indexers.
 
 % Insert something about the metric once we have it really nailed down.
 
-For each experiment we apply the Porter stemming algorithm to each word in the document and each word in a keyphrase, so there will be a match between phrases if all of the individual stemmed tokens match. In experiments using n-grams as candidate phrases, stopwords were removed from the document before the n-grams were formed, using the stopword list used in the SMART system \cite{salton1971smart}. 
+For each experiment we applied the Porter stemming algorithm to each
+word in the document and each word in phrases destined for the index.
+Phrases therefore matched if all of the individual stemmed tokens
+matched. In experiments using n-grams as candidate phrases, stopwords
+were removed from the document before the n-grams were formed, using
+the stopword list of the SMART system \cite{salton1971smart}.
+
 % In experiments using part-of-speech tagging, the Stanford Log-Linear POS tagger was used \cite{toutanova2003feature}.
+
+The following subsections introduce the algorithm (families) we
+applied to the lecture transcripts.
