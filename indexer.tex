@@ -140,7 +140,24 @@
 \maketitle
 % Probably put in a little bit more.
 \begin{abstract}
-As enrollment in online courses grows, it is becoming increasingly difficult for course staff to support students on an individual basis. We are building an autonomous system that will aid instructors and learners in online education; for example, the system might link a forum post with a relevant section of lecture if it detects the poster is confused, or suggest review materials based on a student's history. As a foundation of this system we developed an indexing module that will detect phrases relevant to the key concepts of each lecture, a task often termed keyword extraction. Most research on keyword extraction has focused on heterogenous corpuses, such as abstracts from scientific journals, while our system operates on lecture videos, which are relatively homogenous. To deal with this new setting, we designed algorithms that incorporate external knowledge, using the entire Wikipedia document collection. To evaluate the keyword extraction module, we annotated an online databases course with keywords chosen by humans.
+We examine algorithms for creating indexes into ordered series of
+instructional lecture video transcripts. The goal is for students and
+industry practitioners to use the indexes towards review or
+reference. Lecture videos differ from often-examined document
+collections such as newspaper articles in that the transcript ordering
+generally reflects pedagogical intent. One challenge is therefore to
+identify where a concept is {\em primarily} introduced, and where the
+resulting index should thus direct students. The typically applied
+TF-IDF approach gets tricked in this context by artifacts such as
+worked examples whose associated vocabulary may dominate a lecture,
+but should not be included in a good index. We contrast the TF-IDF
+approach with algorithms that consult Wikipedia documents to vouch for
+term importance. This method helps filter the harmful artifacts. We
+measure the algorithms against three human-created indexes over the 90
+lecture videos of a popular database course. We found that {\em (i)}
+humans have low inter-rater reliability, whether they are experts in
+the field or not, and that {(\em ii)} one of the examined algorithms
+approaches the inter-rater reliability with humans.
 \end{abstract}
 
 %% A category with the (minimum) three required fields
