@@ -89,12 +89,17 @@ transaction commit & GPA \\
 The Document Boosting algorithm can be thought of as amplifying the
 index phrases for a lecture, and therefore decreasing the scores of
 phrases that happen to occur frequently in a lecture but are not
-meaningful. This effect often occurs if a lecture has worked examples that
-use words from the examples frequently, as can be seen in Figure
-\ref{fig:document_boosting_v_tfidf}. The table shows the top ranked
-phrases for the Document Boosting algorithm and plain TF-IDF for a
-lecture on ``Isolation Levels''. In TF-IDF's index phrases we can see
-that the lecture included an example involving students, and the token ``GPA'' appears frequently, even though it is not important to the core concept of the lecture. Similarly, the instructor used examples with transactions named ``T1'' and ``T2'', which appeared frequently in this lecture and not others, in effect tricking the TF-IDF metric.
+meaningful. This effect often occurs if a lecture has worked examples
+that use words from the examples frequently, as can be seen in
+Figure~\ref{fig:document_boosting_v_tfidf}. The table shows the top
+ranked phrases for the Document Boosting algorithm and plain TF-IDF
+for a lecture on ``Isolation Levels''. In TF-IDF's index phrases we
+can see that the lecture included an example involving students, and
+the token ``GPA'' appears frequently, even though it is not important
+to the core concept of the lecture. Similarly, the instructor used
+examples with transactions named ``T1'' and ``T2'', which appeared
+frequently in this lecture and not others, in effect tricking the
+TF-IDF metric.
 
 When Document Boosting was run, the Wikipedia article ``Isolation (database systems)'' was selected, which was able to decrease the frequency of phrases that were part of specific examples, and augment the frequency of words that were related to the concept of isolation levels, such as ``concurrency control'', ``repeat read'', and ``transaction commit''. We can see that conceptually the algorithm is boosting phrases in the intersection of the Wikipedia article and lecture. This allows noise that only occurs frequently in the lecture to be identified and filtered.
 

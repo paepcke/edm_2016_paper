@@ -68,29 +68,52 @@ collections of loosely related documents, such as newspaper articles
 individual documents \cite{ohsawa1998}.
 
 In contrast, the algorithms we study here are confronted with a series
-of documents (i.e. video transcript files) that introduce a number of
-related concepts in pedagogically thought-through order. Many keyword
-extraction algorithms leverage the fact that documents on very
-different topics will have mostly disjoint sets of words, which may
-not work as well in our setting, where very few authors
-(i.e. instructors) produce all the documents.
+of video transcript files that introduce a number of related concepts
+in pedagogically thought-through order. Many keyword extraction
+algorithms leverage the fact that documents on very different topics
+will have mostly disjoint sets of words, which may not be the case in
+our setting where very few authors (i.e. instructors) produce all the
+documents.
 
 Evaluation of an algorithm's success in building a `good' index is
 particularly difficult because indexing from free text is a highly
-subjective process. We do not in this work consider pre-defined
-keyword sets from which an indexer would choose when indexing a
-document. Instead, the task we set for our algorithms is freely to
-choose words from the text that should be included in the index,
-subject possibly to a stemming process. The task thus holds many
-degrees of freedom that allow for a multitude of outcomes.
+subjective process. We do not in this work operate with pre-defined
+keyword sets from which an algorithm would choose. Instead, the task we
+set for our algorithms is freely to choose words from the text that
+should be included in the index, subject possibly to a stemming
+process. The task thus holds many degrees of freedom that allow for a
+multitude of outcomes.
 
 Given this lack of a natural ground truth, we decided to evaluate
 outcomes for our algorithms by comparing against decisions made by
-humans. We examined how well the three human indexes compared to each
-other, and how outcomes of several algorithms compared to each
-participant. We make the three reference indexes and the database
-course video caption files available to the public in hope of
-eliciting indexing approaches beyond those that we explored.
+humans. Given the subjective nature of the task, we paid three humans
+to carefully index the video transcripts from a Stanford online
+database course.  We examined how well the three resulting indexes
+compared to each other, and how outcomes of several algorithms
+compared to each participant. We make the three reference indexes and
+the database course video caption files available to the public in
+hope of eliciting indexing approaches beyond those that we explored.
+
+Figure~\ref{fig:task} is a schematic of the task solved by the human
+and algorithmic indexers.
+\begin{figure}[htp]
+       \centering
+       \includegraphics[height=2in]{indexingTask.pdf}
+       \caption{\textnormal{The task to be solved by the algorithms
+           and human indexers. Construct an index into ordered video
+           lecture transcripts such that index keywords and phrases
+           reference the lecture portions where corresponding concepts
+           are introduced.}}
+       \label{fig:task}
+\end{figure}
+
+The ordered lecture transcripts $L_1--L_n$ contain lines of instructor
+speech, together with timing information. An index is to be
+constructed that maps concept-bearing words and phrases to
+lecture-time pairs. Note that index entries may map to multiple
+lectures, if the corresponding word or phrase is important in those
+lectures. Our current implementations set $t_n$ to the first
+occurrence of the respective index term in the lecture.
 
 Our first experiment took a traditional approach, selecting words for
 the index that appeared disproportionately often in certain
