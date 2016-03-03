@@ -5,6 +5,47 @@
 % results happens.
 
 
+\begin{figure}
+\caption{The top 15 keywords from `Materialized Views' by Phrase Boosting with N-grams. Words in the gold index are marked in bold.}
+\label{fig:top_15}
+\begin{tabular}{|l|l|}
+\hline
+Rank & Phrase \\
+\hline
+1 & \textbf{view} \\
+\hline
+2 & \textbf{materialized view} \\
+\hline
+3 & materialized \\
+\hline
+4 & \textbf{query} \\
+\hline
+5 & \textbf{view query} \\
+\hline
+6 & \textbf{virtual view} \\
+\hline
+7 & \textbf{modify} \\
+\hline
+8 & user query \\
+\hline
+9 & \textbf{base table} \\
+\hline
+10 & \textbf{modify command} \\
+\hline
+11 & \textbf{index} \\
+\hline
+12 & insert command \\
+\hline
+13 & multivalued dependency \\
+\hline
+14 & \textbf{database design} \\
+\hline
+15 & user \\
+\hline
+\end{tabular}
+\end{figure}
+
+
 \begin{figure*}[!ht]
 \caption{}
 \label{fig:main_result}
@@ -26,6 +67,50 @@ Phrase Boosting N-Grams & \textbf{0.204} & \textbf{0.224} & \textbf{0.975} & \te
 \hline
 \end{tabular}
 \end{figure*}
+
+% \begin{figure*}[!ht]
+% \caption{Result without the third rater}
+% \label{fig:main_result}
+% \begin{tabular}{|c|c|c|c|c|}
+% \hline
+% \textbf{Algorithm} & $\mathbf{\kappa}$ & $\mathbf{P_{\text{pos}}}$ & $\mathbf{P_{\text{neg}}}$ & \textbf{PABAK} \\
+% \hline
+% TF-IDF & 0.205 & 0.233 & 0.971 & 0.889 \\
+% \hline
+% TF-IDF with Adjective-Noun Chunks & 0.079 & 0.118 & 0.961 & 0.850 \\
+% \hline
+% Document Boosting & 0.209 & 0.234 & 0.973 & 0.895 \\
+% \hline
+% Document Boosting with Adjective-Noun Chunks & 0.142 & 0.173 & 0.968 & 0.876 \\
+% \hline
+% Phrase Boosting & 0.204 & 0.234 & 0.970 & 0.883 \\
+% \hline
+% Phrase Boosting N-Grams & \textbf{0.237} & \textbf{0.262} & \textbf{0.974} & \textbf{0.899} \\
+% \hline
+% \end{tabular}
+% \end{figure*}
+
+% \begin{figure*}[!ht]
+% \caption{Result with only the top 5}
+% \label{fig:main_result}
+% \begin{tabular}{|c|c|c|c|c|}
+% \hline
+% \textbf{Algorithm} & $\mathbf{\kappa}$ & $\mathbf{P_{\text{pos}}}$ & $\mathbf{P_{\text{neg}}}$ & \textbf{PABAK} \\
+% \hline
+% TF-IDF & 0.227 & 0.241 & 0.986 & 0.946 \\
+% \hline
+% TF-IDF with Adjective-Noun Chunks & 0.108 & 0.125 & 0.982 & 0.931 \\
+% \hline
+% Document Boosting & 0.237 & 0.250 & 0.988 & 0.951 \\
+% \hline
+% Document Boosting with Adjective-Noun Chunks & 0.148 & 0.163 & 0.985 & 0.942 \\
+% \hline
+% Phrase Boosting & 0.223 & 0.237 & 0.986 & 0.945 \\
+% \hline
+% Phrase Boosting N-Grams & \textbf{0.253} & \textbf{0.265} & \textbf{0.987} & \textbf{0.950} \\
+% \hline
+% \end{tabular}
+% \end{figure*}
 
 As stated in Section~\ref{sec:gold}, we computed agreement between
 humans using Fleiss' Kappa. We evaluated each algorithm by computing
@@ -105,7 +190,8 @@ performance, with respect to the human annotators. Limiting the
 candidate set to adjective-noun chunks drastically hurt the
 performance of the algorithm, suggesting that many important phrases
 do not fit this linguistic pattern, and the restriction is too
-severe. Document Boosting and Phrase Boosting, the two algorithms that
+severe. However, Document Boosting with adjective-noun chunks seems to
+yield significant improvement. Document Boosting and Phrase Boosting, the two algorithms that
 incorporated external knowledge, were able to make improvements on the
 basic algorithm. Phrase Boosting with the TF-IDF scores of all
 candidate phrases was slightly better than TF-IDF, and only boosting
@@ -120,3 +206,5 @@ For example, the Document Boosting algorithm had a $\kappa$ of 0.240 and
 a $P_{\text{pos}}$ of 0.247 when compared to this indexer, while the
 $\kappa$s compared to other indexers were 0.146 and 0.191, and the
 $P_{\text{pos}}$ values were 0.147 and 0.147.
+
+To give a more subjective view of our results, we also show the set of keywords extracted from a lecture on `Materialized Views' by the Phrase Boosting with N-grams algorithm, in Figure~\ref{fig:top_15} . Of the top 15 keywords marked by the algorithm, 11 were included in the gold index marked by humans (for this lecture there were 18 keywords in the gold set), and the algorithm produces a ranking that is similar to the humans. Of the keywords ranked highly by the algorithm that were not in the gold index, some (`materialized', `insert command', `multivalued dependency') are relevant to the course, but perhaps not essential to the specific lecture. The last two keywords, `user' and `user query' expose a weakness of the algorithm, where it is difficult to discern phrases that are used frequently, but not essential to the lecture concept.
