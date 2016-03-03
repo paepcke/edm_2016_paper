@@ -8,7 +8,7 @@
 In order to evaluate our algorithms, we prepared a gold standard index
 of terms extracted from an introductory databases course by three paid
 human indexers. Each was presented with all ~90 course closed caption
-video transcripts, and were asked to work through each file in the
+video transcripts, and was asked to work through each file in the
 order the videos were presented in class. Videos were usually around
 10 minutes long.
 
@@ -47,12 +47,12 @@ classification task, where the two categories are {\em in-index} and
 {\em not-in-index}. The algorithms' task was to classify phrases in
 each lecture into these two buckets.
 
-Specifically, we have the algorithms classify phrases that are either
-1-grams or have been tagged as an {\em in-index} phrase by at least one
-rater. For example, in the sentence `One of them is what's called
-the inner join on a condition', where `inner join' has been marked as
-a keyword, the algorithms will be evaluated on their classification
-of `inner join' and `condition', but not on the phrase `one of'.
+%% Specifically, we have the algorithms classify phrases that are either
+%% 1-grams or have been tagged as an {\em in-index} phrase by at least one
+%% rater. For example, in the sentence `One of them is what's called
+%% the inner join on a condition', where `inner join' has been marked as
+%% a keyword, the algorithms will be evaluated on their classification
+%% of `inner join' and `condition', but not on the phrase `one of'.
 % Given a set of raters and a collection of lectures $\ell_1, \ldots,
 % \ell_n$, where each lecture contains phrases $p_1, \ldots, p_n \in
 % \ell_i$, we define the set of examples as the set of lecture-phrase

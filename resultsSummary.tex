@@ -164,7 +164,7 @@ P_{\text{pos}} \coloneqq \frac{a}{\frac{f_1 + g_1}{2}}
  \qquad P_{\text{neg}} \coloneqq \frac{d}{\frac{f_2 + g_2}{2}}
 \end{equation*}
 
-PABAK is defined as the Kappa on a modified concordance table where $a$ and $d$ are replaced with their average and $c$ and $d$ are replaced with their average
+PABAK is defined as the Kappa on a modified concordance table where $a$ and $d$ are replaced with their average and $c$ and $d$ are replaced with their average.
 
 \begin{figure}[h]
 \caption{The concordance table used to calculate PABAK. $a$, $b$, $c$, and $d$ are as defined in Figure \ref{fig:concordance_1}}
@@ -175,6 +175,24 @@ PABAK is defined as the Kappa on a modified concordance table where $a$ and $d$ 
 {\em not-in-index} & $(b + c) / 2$ & $(a + d) / 2$ \\
 \end{tabular}
 \end{figure}
+
+An issue arises when evaluating the size of $p_{neg}$ in the
+comparison between an algorithm and a human indexer. Consider the
+sentence ``One of them is what's called the inner join on a
+condition.'' Say, the indexer classified the 2-gram {\em inner join}
+as belonging into the index, whereas the algorithm decided that
+nothing in this sentence should be included in the index. Do we now
+say that $p_{neg}$ is computed from all the possible phrase-level
+parts of the sentence that both indexer and algorithm decided not to
+place in the index? This decision would mean that all of the following
+should count towards boosting $p_{neg}$: ``One,'', ``One of,'' ``One
+of them,'' ``One of them is,'' and so on for n-grams of increasing
+$n$.
+
+Clearly this approach would make $p_{neg}$ meaningless. Instead we
+include in the set of candidates for consideration in the computation
+of $p_{neg}$ only 1-grams, and any n-grams that were chosen to be in
+the index by at least one rater.
 
 Kappa values do not have a universally agreed upon interpretation, but
 values in the range we observe (about 0.15 to 0.3) have been
