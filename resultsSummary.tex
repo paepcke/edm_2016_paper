@@ -74,7 +74,8 @@
 As stated in Section~\ref{sec:gold}, we computed agreement between
 humans using Fleiss' Kappa. We evaluated each algorithm by computing
 Cohen's Kappa agreement between the algorithm and the gold set
-unified from the three human indexes as described in
+unified from two (one of the human indexes was not included in evaluation
+because they sometimes used words that did not appear in the lecture) of the human indexes as described in
 Section~\ref{sec:gold}: the union of the lecture-phrase pairs in the
 gold indexes. That is a lecture-phrase pair is classified as {\em
   in-index} if any human indexer classified it as {\em in-index}, and
@@ -158,8 +159,7 @@ the index by at least one rater.
 Kappa values do not have a universally agreed upon interpretation, but
 values in the range we observe (about 0.15 to 0.3) have been
 interpreted as indicating ``slight'' to ``fair'' agreement. The fact
-that agreement between humans is only 0.336, and the lowest pairwise
-Kappa between humans was 0.309 suggests that the phrase extraction
+that agreement between humans in the gold index used in evaluation is only 0.325 suggests that the phrase extraction
 task is inherently subjective, and there are multiple valid
 interpretations of what phrases are important enough to be included in
 the index.
@@ -231,12 +231,12 @@ further. We can see that negative agreement was high for all
 algorithms, suggesting that it is relatively easy to identify phrases
 that should not be indexed. Positive agreement was lower, implying it is indeed difficult to identify a small number of phrases to summarize the document, given that there are a large number of possible phrases, and there can be legitimate disagreement on what phrases are most important.
 
-Interestingly, the algorithms seemed to be significantly closer to the
-indexer who took at least one database course in another institution.
-For example, the Document Boosting algorithm had a $\kappa$ of 0.240 and
-a $P_{\text{pos}}$ of 0.247 when compared to this indexer, while the
-$\kappa$s compared to other indexers were 0.146 and 0.191, and the
-$P_{\text{pos}}$ values were 0.147 and 0.147.
+% Interestingly, the algorithms seemed to be significantly closer to the
+% indexer who took at least one database course in another institution.
+% For example, the Document Boosting algorithm had a $\kappa$ of 0.240 and
+% a $P_{\text{pos}}$ of 0.247 when compared to this indexer, while the
+% $\kappa$s compared to other indexers were 0.146 and 0.191, and the
+% $P_{\text{pos}}$ values were 0.147 and 0.147.
 
 \begin{figure}[h]
 \caption{The top 15 keywords from `Materialized Views' by Phrase
