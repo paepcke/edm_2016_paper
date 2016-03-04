@@ -54,8 +54,15 @@ compared to indicators such as Cohen's Kappa. Nonetheless
 \cite{park2006extracting} is very much in the spirit of our
 investigation. 
 
-Keyword extraction from Khan Academy lecture videos has been
-experimented with, using statistical properties of the lecture
-transcripts \cite{6337092}.
+Keyword extraction from Khan Academy lecture videos has been experimented with,
+using statistical properties of the lecture transcripts \cite{6337092}. Their 
+methods provided interesting insights, but our research goes beyond their work.
+Firstly, their system only extracts unigram keywords for five, 2-3 minute 
+lecture videos, whereas we consider all multi-word keywords over our 92 
+lectures, with many lectures lasting longer than 10 minutes. While the larger 
+scope of our problem makes it uniquely interesting, it is also necessary in 
+order to index an entire MOOC. Incorporating Wikipedia's external knowledge 
+for keyword extraction further distinguishes our approach, because we don't 
+restrict our algorithms to course content.
 
 Finally, there has been research into using Wikipedia's external knowledge for natural language processing tasks such as clustering documents \cite{hu2009exploiting} and computing semantic similarity between words \cite{milne2007computing}.
