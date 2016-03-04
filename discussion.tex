@@ -10,10 +10,10 @@ distribution over what phrases should be considered important. This
 prior is then combined with the local knowledge in a specific
 lecture. In practice, TF-IDF tends to give longer phrases unfairly low
 scores, because they do not appear frequently, even though they may be
-quite important to the content. Phrase Boosing corrects this by
+quite important to the content. Phrase Boosting corrects this by
 raising the value of longer phrases. For example, in the lecture
 ``DTDs IDs and IDREFs'', the phrase ``Document Type Descriptors'' is
-clearly important, but only appears 5 times in the lecture, is
+clearly important, but only appears 5 times in the lecture, and is
 therefore ranked 36th if Phrase Boosting is not used. After
 incorporating the global Wikipedia ranking and the preference for
 longer phrases, the phrase is boosted to the 9th rank. There are
