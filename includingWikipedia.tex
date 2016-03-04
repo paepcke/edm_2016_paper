@@ -16,7 +16,7 @@ the lecture. Then, using either n-grams or adjective-noun phrases as
 candidate keywords, the algorithm chooses phrases with TF-IDF over the
 combined document for the index.
 
-\begin{figure}[h!]
+\begin{figure}
 \caption{The Document Boosting algorithm searches for a Wikipedia page using the title of the lecture, concatenates the result to the lecture, and then runs TF-IDF over the combined document.}
 \includegraphics[width=\textwidth]{document_boosting.pdf}
 \end{figure}
@@ -78,7 +78,7 @@ TF_w(p) = \log \left(\sum_{d \in W} \text{number of times } p \text{ appears in 
 Second, we take the logarithm of the phrase count in the Wikipedia
 ranking. This choice produces improved empirical results.
 
-\begin{figure}[!h]
+\begin{figure}
 \caption{The Phrase Boosting algorithm runs TF-IDF over the entirety of Wikipedia and then combines the global ranking with a local ranking for a document.}
 \includegraphics[width=\textwidth]{phrase_boosting.pdf}
 \end{figure}
