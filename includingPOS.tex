@@ -5,15 +5,8 @@
 % sequence of videos into account? Such an experiment would nicely tell
 % a story from naive TF/IDF to including pedagogy to including external
 % wikipedia.
-
-Considering all of the n-grams in the collection of lectures as
-candidate keywords has the potential of adding significant noise. By
-selecting only certain linguistic patterns for consideration as
-phrases, it is possible to reduce the size of the candidate set, while
-still covering most important phrases. We measured an
+We measured an
 algorithm that first runs a part-of-speech tagger over the lecture
-transcripts, and then selected only phrases that consist of an
-arbitrary number of adjectives followed by one or more nouns. For
+transcripts, and then selected only phrases that consist of a number of adjectives followed by one or more nouns. For
 example, ``equality condition'' or ``XML data'' were both included in
-the candidate set. We then ran TF-IDF over this reduced set. After
-this process we proceeded as in Section~\ref{sec:tfidf}.
+the candidate set. We then ran TF-IDF over this reduced set.

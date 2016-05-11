@@ -71,95 +71,89 @@
 % \end{tabular}
 % \end{figure*}
 
-As stated in Section~\ref{sec:gold}, we computed agreement between
-humans using Fleiss' Kappa. We evaluated each algorithm by computing
+We evaluated each algorithm by computing
 Cohen's Kappa agreement between the algorithm and the gold set
 unified from two (one of the human indexes was not included in evaluation
 because they sometimes used words that did not appear in the lecture) of the human indexes as described in
-Section~\ref{sec:gold}: the union of the lecture-phrase pairs in the
-gold indexes. That is a lecture-phrase pair is classified as {\em
-  in-index} if any human indexer classified it as {\em in-index}, and
-classified as {\em not-in-index} otherwise. When using a single metric
-for agreement, such as Cohen's Kappa, paradoxes can arise when one
-category is much more prevalent than another and the chance-correction
-term in the agreement metric overcompensates. This effect leads to
-inappropriately low values of $\kappa$ for high inter-rater agreement
-\cite{feinstein1990high}.
+Section~\ref{sec:gold}. The intuition is a measure of inter-rater reliability,
+such as the Kappa, measures how closely the algorithmic index agrees with the
+human indexes.
 
-This problem arises in our context because there are many more {\em not-in-index} phrases than
-phrases destined for the index. To help deconstruct the above-mentioned
-inappropriate $\kappa$ values, we report three additional metrics:
-agreement on {\em in-index} decisions ($P_{\text{pos}}$), agreement on
-{\em not-in-index} decisions ($P_{\text{neg}}$)
-\cite{cicchetti1990high}, and prevalence-adjusted bias-adjusted
-$\kappa$ (PABAK) \cite{byrt1993bias}. Because the algorithms produce a
-ranking of candidate phrases, we produce a binary classification by
-choosing a threshold above which candidates are labeled as {\em
-  in-index}. In our reported results, we use the average number of
-keywords per lecture labeled by humans as the threshold.
+%
+% This problem arises in our context because there are many more {\em not-in-index} phrases than
+% phrases destined for the index. To help deconstruct the above-mentioned
+% inappropriate $\kappa$ values, we report three additional metrics:
+% agreement on {\em in-index} decisions ($P_{\text{pos}}$), agreement on
+% {\em not-in-index} decisions ($P_{\text{neg}}$)
+% \cite{cicchetti1990high}, and prevalence-adjusted bias-adjusted
+% $\kappa$ (PABAK) \cite{byrt1993bias}. Because the algorithms produce a
+% ranking of candidate phrases, we produce a binary classification by
+% choosing a threshold above which candidates are labeled as {\em
+%   in-index}. In our reported results, we use the average number of
+% keywords per lecture labeled by humans as the threshold.
+%
+% These three metrics are defined in terms of a concordance table with
+% two raters (the composite-human and the algorithm) and two
+% categories ({\em in-index} and {\em not-in-index}), as shown in
+% Figure~\ref{fig:concordance_1} and Figure~\ref{fig:pabak}.
 
-These three metrics are defined in terms of a concordance table with
-two raters (the composite-human and the algorithm) and two
-categories ({\em in-index} and {\em not-in-index}), as shown in
-Figure~\ref{fig:concordance_1} and Figure~\ref{fig:pabak}.
+% \begin{figure}[h]
+% \caption{The concordance table used to calculate $P_{\text{pos}}$ and $P_{\text{neg}}$. }
+% \label{fig:concordance_1}
+% \begin{tabular}{l || c c c}
+% & {\em in-index} & {\em not-in-index} & Total \\
+% \hline \hline
+% Keyword & $a$ & $b$ & $f_1$ \\
+% Not Keyword & $c$ & $d$ & $f_2$ \\
+% Total & $g_1$ & $g_2$ & $N$ \\
+% \end{tabular}
+% \end{figure}
 
-\begin{figure}[h]
-\caption{The concordance table used to calculate $P_{\text{pos}}$ and $P_{\text{neg}}$. }
-\label{fig:concordance_1}
-\begin{tabular}{l || c c c}
-& {\em in-index} & {\em not-in-index} & Total \\
-\hline \hline
-Keyword & $a$ & $b$ & $f_1$ \\
-Not Keyword & $c$ & $d$ & $f_2$ \\
-Total & $g_1$ & $g_2$ & $N$ \\
-\end{tabular}
-\end{figure}
+% Positive agreement is the number of terms both indexers marked as {\em
+%   in-index} over the average number of terms marked as {\em in-index}, and
+% negative agreement is the number of terms both indexers marked as {\em not
+%   in-index} over the average number of terms marked as {\em not
+%   in-index}:
+% \begin{equation*}
+% P_{\text{pos}} \coloneqq \frac{a}{\frac{f_1 + g_1}{2}}
+%  \qquad P_{\text{neg}} \coloneqq \frac{d}{\frac{f_2 + g_2}{2}}
+% \end{equation*}
+%
+% PABAK is defined as the Kappa on a modified concordance table where $a$ and $d$ are replaced with their average, and $c$ and $d$ are replaced with their average.
+%
+% \begin{figure}[h]
+% \caption{The concordance table used to calculate PABAK. $a$, $b$, $c$, and $d$ are as defined in Figure \ref{fig:concordance_1}}
+% \label{fig:pabak}
+% \begin{tabular}{l || c c }
+% & {\em in-index} & {\em not-in-index} \\
+% \hline \hline
+% {\em in-index} & $(a + d) / 2$ & $(b + c) / 2$ \\
+% {\em not-in-index} & $(b + c) / 2$ & $(a + d) / 2$ \\
+% \end{tabular}
+% \end{figure}
 
-Positive agreement is the number of terms both indexers marked as {\em
-  in-index} over the average number of terms marked as {\em in-index}, and
-negative agreement is the number of terms both indexers marked as {\em not
-  in-index} over the average number of terms marked as {\em not
-  in-index}:
-\begin{equation*}
-P_{\text{pos}} \coloneqq \frac{a}{\frac{f_1 + g_1}{2}}
- \qquad P_{\text{neg}} \coloneqq \frac{d}{\frac{f_2 + g_2}{2}}
-\end{equation*}
-
-PABAK is defined as the Kappa on a modified concordance table where $a$ and $d$ are replaced with their average, and $c$ and $d$ are replaced with their average.
-
-\begin{figure}[h]
-\caption{The concordance table used to calculate PABAK. $a$, $b$, $c$, and $d$ are as defined in Figure \ref{fig:concordance_1}}
-\label{fig:pabak}
-\begin{tabular}{l || c c }
-& {\em in-index} & {\em not-in-index} \\
-\hline \hline
-{\em in-index} & $(a + d) / 2$ & $(b + c) / 2$ \\
-{\em not-in-index} & $(b + c) / 2$ & $(a + d) / 2$ \\
-\end{tabular}
-\end{figure}
-
-An issue arises when evaluating the size of $P_{neg}$ in the
-comparison between an algorithm and a human indexer. Consider the
-sentence ``One of them is what's called the inner join on a
-condition.'' Say, the indexer classified the 2-gram {\em inner join}
-as belonging into the index, whereas the algorithm decided that
-nothing in this sentence should be included in the index. Do we now
-say that $P_{neg}$ is computed from all the possible phrase-level
-parts of the sentence that both indexer and algorithm decided not to
-place in the index? This decision would mean that all of the following
-should count towards boosting $P_{neg}$: ``One,'', ``One of,'' ``One
-of them,'' ``One of them is,'' and so on for n-grams of increasing
-$n$.
-
-Clearly this approach would make $P_{neg}$ meaningless. Instead we
-include in the set of candidates for consideration in the computation
-of $P_{neg}$ only 1-grams, and any n-grams that were chosen to be in
-the index by at least one rater.
+% An issue arises when evaluating the size of $P_{neg}$ in the
+% comparison between an algorithm and a human indexer. Consider the
+% sentence ``One of them is what's called the inner join on a
+% condition.'' Say, the indexer classified the 2-gram {\em inner join}
+% as belonging into the index, whereas the algorithm decided that
+% nothing in this sentence should be included in the index. Do we now
+% say that $P_{neg}$ is computed from all the possible phrase-level
+% parts of the sentence that both indexer and algorithm decided not to
+% place in the index? This decision would mean that all of the following
+% should count towards boosting $P_{neg}$: ``One,'', ``One of,'' ``One
+% of them,'' ``One of them is,'' and so on for n-grams of increasing
+% $n$.
+%
+% Clearly this approach would make $P_{neg}$ meaningless. Instead we
+% include in the set of candidates for consideration in the computation
+% of $P_{neg}$ only 1-grams, and any n-grams that were chosen to be in
+% the index by at least one rater.
 
 Kappa values do not have a universally agreed upon interpretation, but
 values in the range we observe (about 0.15 to 0.3) have been
-interpreted as indicating ``slight'' to ``fair'' agreement. The fact
-that agreement between humans in the gold index used in evaluation is only 0.325 suggests that the phrase extraction
+interpreted as indicating ``slight'' to ``fair'' agreement. We measured an
+agreement of 0.325 between humans in the gold index, suggesting that the phrase extraction
 task is inherently subjective, and there are multiple valid
 interpretations of what phrases are important enough to be included in
 the index.
@@ -214,23 +208,13 @@ Figure~\ref{fig:main_result}. The Phrase Boosting N-Grams algorithm,
 which favors longer words, performed the best out of all algorithms,
 and had a Cohen's Kappa of 0.237 agreement with the gold index. This nears the
 lowest pairwise agreement between humans of 0.309, showing that the
-algorithm is close to the performance of a human.
-
-The plain TF-IDF algorithm was also able to achieve reasonable
-performance with respect to the human annotators. Limiting the
-candidate set to adjective-noun chunks drastically hurt the
-performance of the algorithm, suggesting that many important phrases
-do not fit this linguistic pattern, and the restriction is too
-severe. However, Document Boosting with adjective-noun chunks seems to
+algorithm is close to the performance of a human.Document Boosting with adjective-noun chunks seems to
 yield significant improvement. Document Boosting and Phrase Boosting, the two algorithms that
 incorporated external knowledge, were able to make improvements on the
 basic algorithm. Document Boosting, which appended a Wikipedia document to
 each lecture, was able to improve over TF-IDF, and boosting
 longer phrases (Phrase Boosting N-Grams) was able to improve
-further. We can see that negative agreement was high for all
-algorithms, suggesting that it is relatively easy to identify phrases
-that should not be indexed. Positive agreement was lower, implying it is indeed difficult to identify a small number of phrases to summarize the document, given that there are a large number of possible phrases, and there can be legitimate disagreement on what phrases are most important.
-
+further. 
 % Interestingly, the algorithms seemed to be significantly closer to the
 % indexer who took at least one database course in another institution.
 % For example, the Document Boosting algorithm had a $\kappa$ of 0.240 and
