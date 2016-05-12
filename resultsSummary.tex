@@ -74,7 +74,7 @@
 We evaluated each algorithm by computing Cohen's Kappa agreement
 between the algorithm and a gold set created by unifying two of the
 human indexes\footnote{One of the human indexes was excluded because
-  it sometimes included words that did not appear in the lecture.}. 
+  it sometimes included words that did not appear in the lecture.}.
 We chose a widely employed inter-rater reliability measure because
 indexing is highly subjective. Given this absence of absolute truth
 we therefore treated the algorithms as we would have measured
@@ -179,28 +179,27 @@ therefore the measure to beat.
 % \end{tabular}
 % \end{figure*}
 
-
-\begin{figure*}[!htbp]
+\begin{figure}[!ht]
 \caption{}
 \label{fig:main_result}
-\begin{tabular}{|c|c|c|c|c|}
+\begin{tabular}{|c|c|}
 \hline
-\textbf{Algorithm} & $\mathbf{\kappa}$ & $\mathbf{P_{\text{pos}}}$ & $\mathbf{P_{\text{neg}}}$ & \textbf{PABAK} \\
+\textbf{Algorithm} & $\mathbf{\kappa}$ \\
 \hline
-TF-IDF & 0.205 & 0.233 & 0.971 & 0.889 \\
+TF-IDF & 0.205 \\
 \hline
-TF-IDF with Adjective-Noun Chunks & 0.079 & 0.118 & 0.961 & 0.850 \\
+TF-IDF with Adjective-Noun Chunks & 0.079 \\
 \hline
-Document Boosting & 0.209 & 0.234 & 0.973 & 0.895 \\
+Document Boosting & 0.209 \\
 \hline
-Document Boosting with Adjective-Noun Chunks & 0.142 & 0.173 & 0.968 & 0.876 \\
+Document Boosting with Adjective-Noun Chunks & 0.142 \\
 \hline
-Phrase Boosting & 0.204 & 0.234 & 0.970 & 0.883 \\
+Phrase Boosting & 0.204 \\
 \hline
-Phrase Boosting N-Grams & \textbf{0.237} & \textbf{0.262} & \textbf{0.974} & \textbf{0.899} \\
+Phrase Boosting N-Grams & \textbf{0.237} \\
 \hline
 \end{tabular}
-\end{figure*}
+\end{figure}
 
 The metrics for all of the algorithms are shown in
 Figure~\ref{fig:main_result}. The Phrase Boosting N-Grams algorithm,
@@ -233,4 +232,3 @@ the specific lecture. The last two keywords, `user' and `user query'
 expose a weakness of the algorithm, where it is difficult to discern
 phrases that are used frequently, but not essential to the lecture
 concept.
-
