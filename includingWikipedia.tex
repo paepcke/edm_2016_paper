@@ -3,21 +3,21 @@
 
 % All of the wikipedia inclusion work.
 
-Motivated by the intuition that phrases gain importance because of both their role in a document and their semantic meaning in the broader world, we experimented with multiple algorithms that incorporate outside knowledge. Each algorithm integrates Wikipedia as a knowledge source in different ways.
+Note that phrases gain importance because of both their role in a
+document but also from their semantic meaning in the broader world.
+Variants of our next algorithms therefore integrate Wikipedia as a
+knowledge source.
 
 \subsubsection{Boosting Documents}
 
-The first algorithm concatenates to each lecture a closely related Wikipedia page,
-and then uses the previously described statistical and linguistic techniques
-to choose phrases from the combined document. Formally, the procedure is as
-follows.
-
-For example, for the lecture titled ``View Modifications Using
-Triggers'', the first page in the Wikipedia search results is
-``Database trigger'', which is then concatenated to the transcript of
-the lecture. Then, using either n-grams or adjective-noun phrases as
-candidate keywords, the algorithm chooses phrases with TF-IDF over the
-combined document for the index.
+The first variant concatenates to each lecture a closely related
+Wikipedia page, and then uses the techniques of
+Section~\ref{sec:useTime} to choose phrases for the index. For
+example, lecture title ``View Modifications Using Triggers'', yields
+as the first Wikipedia result a page titled ``Database trigger.''
+This page is appended to the lecture transcript. Using either
+n-grams or adjective-noun phrases as candidate keywords, the algorithm
+chooses phrases with TF-IDF over the combined document for the index.
 
 \begin{figure}
 \caption{The Document Boosting algorithm searches for a Wikipedia page using the title of the lecture, concatenates the result to the lecture, and then runs TF-IDF over the combined document.}
@@ -27,12 +27,12 @@ combined document for the index.
 \subsubsection{Boosting Phrases}
 
 This algorithm first creates a list of candidate index terms using
-adjective-noun phrases. Then the candidates are ranked by their TF-IDF score
-summed over all Wikipedia documents.
+adjective-noun phrases. These candidates are ranked by their TF-IDF score
+summed over {\bf all} Wikipedia documents.
 
-Next, this global candidate ranking is combined with the basic TF-IDF approach
-described in Section~\ref{sec:tfidf} to form a final score that combines global
-knowledge (from Wikipedia) with local knowledge (from the specific lecture video). 
+Next, this global candidate ranking is combined with a basic TF-IDF
+approach to form a final score that combines global knowledge (from
+Wikipedia) with local knowledge (from the specific lecture video).
 %
 % First, we create a normalized Wikipedia candidate ranking
 % \begin{equation*}
@@ -54,6 +54,48 @@ based on the intution that longer phrases are often meaningful, but
 appear infrequently and are therefore given low scores by TF-IDF. We
 call this alternative ``Phrase Boosting N-Grams'' in Figure
 \ref{fig:main_result}.
+
+\begin{figure}[!htbp]
+\caption{The top 15 keywords from `Materialized Views' by Phrase
+  Boosting with N-grams. Phrases that also appear in the gold index are marked in bold.}
+\label{fig:top_15}
+\begin{tabular}{|l|l|}
+\hline
+Rank & Phrase \\
+\hline
+1 & \textbf{view} \\
+\hline
+2 & \textbf{materialized view} \\
+\hline
+3 & materialized \\
+\hline
+4 & \textbf{query} \\
+\hline
+5 & \textbf{view query} \\
+\hline
+6 & \textbf{virtual view} \\
+\hline
+7 & \textbf{modify} \\
+\hline
+8 & user query \\
+\hline
+9 & \textbf{base table} \\
+\hline
+10 & \textbf{modify command} \\
+\hline
+11 & \textbf{index} \\
+\hline
+12 & insert command \\
+\hline
+13 & multivalued dependency \\
+\hline
+14 & \textbf{database design} \\
+\hline
+15 & user \\
+\hline
+\end{tabular}
+\end{figure}
+
 %
 % A few subtleties deserve further description. First, in our simple
 % TF-IDF approach, a score is calculated for each lecture $l$ and phrase

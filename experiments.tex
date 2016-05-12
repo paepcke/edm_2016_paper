@@ -8,10 +8,19 @@
 % List whatever is common to the three experiments: stop word removal,
 % method used for stemming...
 
-We implemented several index term extraction algorithms and measured
-how closely they agreed with the gold index derived from the work of
-our human indexers. The following subsections introduce the algorithm (families) we
-applied to the lecture transcripts.
+Our first experiment took a traditional approach, selecting words for
+the index that appeared disproportionately often in certain lectures
+(TF-IDF \cite{mann2008}). We then incorporated lexical information, by
+only considering phrases that followed certain part-of-speech
+patterns. Finally, we introduced external knowledge from Wikipedia
+into an algorithm's indexing decisions. Note that none of the
+algorithms included supervised learning, as we do not assume the
+existence of a training set for all courses. The following subsections
+introduce the algorithm (families) beyond the TF-IDF version.
+
+%% We implemented several index term extraction algorithms and measured
+%% how closely they agreed with the gold index derived from the work of
+%% our human indexers. 
 
 % Insert something about the metric once we have it really nailed down.
 

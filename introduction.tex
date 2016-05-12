@@ -45,12 +45,17 @@
 % {\em capabilities} of book indexes---however they can best manifest in
 % online teaching.
 
-We present comparisons of algorithms that can be applied to extract keywords
-from instructional videos from massively open online courses (MOOCs) in order to
-construct an index. We use as
-our raw material the closed caption files that are often available for
-educational video. Those files contain transcripts of the videoed
-instructor's words, paired with timing information at roughly sentence
+Lecture videos of online classes are clumsy when students wish to
+review course materials. It is impossible to access just a particular
+portion of interest. A solution would be an automatically created
+index similar to the reference at the end of a book. The facility
+would allow access into portion of videos where a particular topic is
+discussed.
+
+We compared several algorithms that create such an index for every
+course video. Raw material are the closed caption files that are often
+available for educational video. Those files contain transcripts of
+the audio, paired with timing information at roughly sentence
 granularity.
 
 % The challenge in effective indexing is that keywords must not only
@@ -87,14 +92,12 @@ granularity.
 % process. The task thus holds many degrees of freedom that allow for a
 % multitude of outcomes.
 
-Without a natural ground truth for our indexes, we evaluated our algorithms by comparing against decisions made by
-humans. We paid three humans to carefully index the video transcripts
-from a Stanford online database course.  We examined how well the
-three resulting indexes compared to each other, and how outcomes of
-several algorithms compared to each of the human-generated results. We
-make the three reference indexes and the database course video caption
-files available to the public in hope of eliciting indexing approaches
-beyond those that we explored.
+We paid three humans with varying domain expertise to carefully index
+the video transcripts from a Stanford online database course.  We
+compared the three resulting indexes to each other, and to results
+from the algorithms. We make the three reference indexes and the
+database course video caption files available to the public in hope of
+eliciting indexing approaches beyond those that we explored.
 
 % Figure~\ref{fig:task} is a schematic of the task solved by the human
 % and algorithmic indexers.
@@ -121,14 +124,14 @@ beyond those that we explored.
 % word or phrase is therefore a potential candidate for inclusion in the
 % index.
 
-Our first experiment took a traditional approach, selecting words for
-the index that appeared disproportionately often in certain
-lectures. We then incorporated lexical information, by only
-considering phrases that followed certain part-of-speech
-patterns. Finally, we introduced external knowledge from Wikipedia
-into an algorithm's indexing decisions. Note that none of the
-algorithms included supervised learning, as we do not assume the
-existence of a training set for all courses.
+%% Our first experiment took a traditional approach, selecting words for
+%% the index that appeared disproportionately often in certain
+%% lectures. We then incorporated lexical information, by only
+%% considering phrases that followed certain part-of-speech
+%% patterns. Finally, we introduced external knowledge from Wikipedia
+%% into an algorithm's indexing decisions. Note that none of the
+%% algorithms included supervised learning, as we do not assume the
+%% existence of a training set for all courses.
 
 % In Section~\ref{sec:relWork} we review some of the related
 % literature. Section~\ref{sec:gold} offers more detail on how we

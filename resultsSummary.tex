@@ -71,13 +71,14 @@
 % \end{tabular}
 % \end{figure*}
 
-We evaluated each algorithm by computing
-Cohen's Kappa agreement between the algorithm and the gold set
-unified from two (one of the human indexes was not included in evaluation
-because they sometimes used words that did not appear in the lecture) of the human indexes as described in
-Section~\ref{sec:gold}. The intuition is a measure of inter-rater reliability,
-such as the Kappa, measures how closely the algorithmic index agrees with the
-human indexes.
+We evaluated each algorithm by computing Cohen's Kappa agreement
+between the algorithm and a gold set created by unifying two of the
+human indexes\footnote{One of the human indexes was excluded because
+  it sometimes included words that did not appear in the lecture.}. 
+We chose a widely employed inter-rater reliability measure because
+indexing is highly subjective. Given this absence of absolute truth
+we therefore treated the algorithms as we would have measured
+reliability of an additional human indexer.
 
 %
 % This problem arises in our context because there are many more {\em not-in-index} phrases than
@@ -152,11 +153,9 @@ human indexes.
 
 Kappa values do not have a universally agreed upon interpretation, but
 values in the range we observe (about 0.15 to 0.3) have been
-interpreted as indicating ``slight'' to ``fair'' agreement. We measured an
-agreement of 0.325 between humans in the gold index, suggesting that the phrase extraction
-task is inherently subjective, and there are multiple valid
-interpretations of what phrases are important enough to be included in
-the index.
+interpreted as indicating ``slight'' to ``fair'' agreement. We measured
+agreement of 0.325 between the humans in the gold index. This value is
+therefore the measure to beat.
 
 % \begin{figure*}
 % \caption{}
@@ -181,7 +180,7 @@ the index.
 % \end{figure*}
 
 
-\begin{figure*}[!ht]
+\begin{figure*}[!htbp]
 \caption{}
 \label{fig:main_result}
 \begin{tabular}{|c|c|c|c|c|}
@@ -205,62 +204,20 @@ Phrase Boosting N-Grams & \textbf{0.237} & \textbf{0.262} & \textbf{0.974} & \te
 
 The metrics for all of the algorithms are shown in
 Figure~\ref{fig:main_result}. The Phrase Boosting N-Grams algorithm,
-which favors longer words, performed the best out of all algorithms,
-and had a Cohen's Kappa of 0.237 agreement with the gold index. This nears the
-lowest pairwise agreement between humans of 0.309, showing that the
-algorithm is close to the performance of a human.Document Boosting with adjective-noun chunks seems to
-yield significant improvement. Document Boosting and Phrase Boosting, the two algorithms that
-incorporated external knowledge, were able to make improvements on the
-basic algorithm. Document Boosting, which appended a Wikipedia document to
-each lecture, was able to improve over TF-IDF, and boosting
-longer phrases (Phrase Boosting N-Grams) was able to improve
-further. 
+which favors longer words, performed best with a Cohen's Kappa of
+0.237.
+
+%% Document Boosting with adjective-noun chunks yielded
+%% significant improvement. Document Boosting and Phrase Boosting, the
+%% two algorithms that incorporated Wikipedia, improved on the basic
+%% algorithm. Document Boosting improved over TF-IDF, and boosting longer
+%% phrases (Phrase Boosting N-Grams) yielded higher values still.
+
 % Interestingly, the algorithms seemed to be significantly closer to the
 % indexer who took at least one database course in another institution.
 % For example, the Document Boosting algorithm had a $\kappa$ of 0.240 and
 % a $P_{\text{pos}}$ of 0.247 when compared to this indexer, while the
 % $\kappa$s compared to other indexers were 0.146 and 0.191, and the
 % $P_{\text{pos}}$ values were 0.147 and 0.147.
-
-\begin{figure}[h]
-\caption{The top 15 keywords from `Materialized Views' by Phrase
-  Boosting with N-grams. Phrases that also appear in the gold index are marked in bold.}
-\label{fig:top_15}
-\begin{tabular}{|l|l|}
-\hline
-Rank & Phrase \\
-\hline
-1 & \textbf{view} \\
-\hline
-2 & \textbf{materialized view} \\
-\hline
-3 & materialized \\
-\hline
-4 & \textbf{query} \\
-\hline
-5 & \textbf{view query} \\
-\hline
-6 & \textbf{virtual view} \\
-\hline
-7 & \textbf{modify} \\
-\hline
-8 & user query \\
-\hline
-9 & \textbf{base table} \\
-\hline
-10 & \textbf{modify command} \\
-\hline
-11 & \textbf{index} \\
-\hline
-12 & insert command \\
-\hline
-13 & multivalued dependency \\
-\hline
-14 & \textbf{database design} \\
-\hline
-15 & user \\
-\hline
-\end{tabular}
-\end{figure}
 
 To give a more subjective view of our results, we also show the set of keywords extracted from a lecture on `Materialized Views' by the Phrase Boosting with N-grams algorithm, in Figure~\ref{fig:top_15} . Of the top 15 keywords marked by the algorithm, 11 were included in the gold index marked by humans (for this lecture there were 18 keywords in the gold set), and the algorithm produces a ranking that is similar to the humans. Of the keywords ranked highly by the algorithm that were not in the gold index, some (`materialized', `insert command', `multivalued dependency') are relevant to the course, but perhaps not essential to the specific lecture. The last two keywords, `user' and `user query' expose a weakness of the algorithm, where it is difficult to discern phrases that are used frequently, but not essential to the lecture concept.
