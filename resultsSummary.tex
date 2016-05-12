@@ -204,7 +204,11 @@ Phrase Boosting N-Grams & \textbf{0.237} \\
 The metrics for all of the algorithms are shown in
 Figure~\ref{fig:main_result}. The Phrase Boosting N-Grams algorithm,
 which favors longer words, performed best with a Cohen's Kappa of
-0.237.
+0.237. The Document Boosting algorithm is able to slightly improve on TF-IDF,
+by filtering superfluous keywords using the external knowledge from Wikipedia.
+Note that Cohen's Kappa can sometimes be problematic when using an unbalanced
+dataset. In our full paper, we evaluate the algorithms with complementary
+metrics to guard against potential pathological cases.
 
 %% Document Boosting with adjective-noun chunks yielded
 %% significant improvement. Document Boosting and Phrase Boosting, the
